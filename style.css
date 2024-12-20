@@ -3,6 +3,8 @@
     --secondary-color: #2a5298;
     --accent-color: #ffd700;
     --text-color: #ffffff;
+    --background-color: #f0f0f0;
+    --box-shadow-color: rgba(0, 0, 0, 0.1);
 }
 
 * {
@@ -17,6 +19,7 @@ body {
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     color: var(--text-color);
     line-height: 1.6;
+    font-size: 16px;
 }
 
 .container {
@@ -35,6 +38,8 @@ body {
     backdrop-filter: blur(10px);
     z-index: 1000;
     padding: 15px 0;
+    box-shadow: 0 4px 6px var(--box-shadow-color);
+    animation: slideDown 0.5s ease-out;
 }
 
 .nav-links {
@@ -47,11 +52,12 @@ body {
     color: var(--text-color);
     text-decoration: none;
     font-weight: 500;
-    transition: color 0.3s ease;
+    transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .nav-links a:hover {
     color: var(--accent-color);
+    transform: scale(1.1);
 }
 
 /* Hero Section */
@@ -62,23 +68,273 @@ body {
     justify-content: center;
     text-align: center;
     padding-top: 60px;
+    animation: fadeIn 1s ease-in-out;
 }
 
 .welcome-text {
     font-size: 4em;
     margin-bottom: 20px;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-    background: linear-gradient(45deg, #fff, #ffd700);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(45deg, #fff, var(--accent-color));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    animation: fadeInUp 1s ease-in-out;
 }
 
-/* Add styles for other sections similarly */
+.hero-content p {
+    font-size: 1.2em;
+    margin-top: 10px;
+    color: #f0f0f0;
+    animation: fadeInUp 1.2s ease-in-out;
+}
 
-/* Animations */
+/* Profile Section */
+.profile-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 50px 20px;
+    background: var(--background-color);
+    color: #333;
+    flex-wrap: wrap;
+    gap: 30px;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.profile-img {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px var(--box-shadow-color);
+    animation: fadeInLeft 1s ease-in-out;
+}
+
+.profile-info {
+    max-width: 600px;
+    animation: fadeInRight 1s ease-in-out;
+}
+
+.profile-info h2 {
+    font-size: 2em;
+    margin-bottom: 10px;
+    color: var(--primary-color);
+}
+
+.profile-info p {
+    margin-top: 10px;
+    color: #555;
+    line-height: 1.6;
+}
+
+/* Skills Section */
+.skills-section {
+    padding: 50px 20px;
+    text-align: center;
+    background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+    animation: fadeIn 1s ease-in-out;
+}
+
+.skills-section h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: var(--accent-color);
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+}
+
+.skill-card {
+    padding: 20px;
+    background: var(--background-color);
+    color: #333;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px var(--box-shadow-color);
+    transition: transform 0.3s ease;
+    animation: fadeInUp 1s ease-in-out;
+}
+
+.skill-card:hover {
+    transform: translateY(-10px);
+}
+
+/* Projects Section */
+.projects-section {
+    padding: 50px 20px;
+    background: var(--background-color);
+    color: #333;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.projects-section h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2.5em;
+    color: var(--primary-color);
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.project-card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px var(--box-shadow-color);
+    padding: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: fadeInUp 1.2s ease-in-out;
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 12px var(--box-shadow-color);
+}
+
+.project-card h3 {
+    font-size: 1.5em;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.project-card h4 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    color: var(--secondary-color);
+}
+
+.project-card p {
+    font-size: 1em;
+    color: #555;
+}
+
+/* Contact Section */
+.contact-form {
+    padding: 50px 20px;
+    text-align: center;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    animation: fadeIn 1s ease-in-out;
+}
+
+.contact-form h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: var(--accent-color);
+}
+
+form {
+    max-width: 600px;
+    margin: 0 auto;
+    background: var(--background-color);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px var(--box-shadow-color);
+    animation: fadeInUp 1.2s ease-in-out;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+textarea {
+    height: 100px;
+}
+
+.submit-btn {
+    background: var(--accent-color);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.submit-btn:hover {
+    background: #e6c200;
+}
+
+/* Social Links */
+.social-links {
+    text-align: center;
+    margin: 20px 0;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.social-links a {
+    margin: 0 10px;
+    font-size: 1.5em;
+    color: var(--text-color);
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: var(--accent-color);
+}
+
+/* Keyframes for Animations */
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+    }
+    to {
+        transform: translateY(0);
+    }
 }
 
 /* Responsive Design */
