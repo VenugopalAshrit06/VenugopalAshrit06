@@ -5,19 +5,19 @@ AOS.init({
 });
 
 // Form Handling
-document.getElementById('contactForm').addEventListener('submit', function(e) {
-    e.preventDefault();
+// document.getElementById('contactForm').addEventListener('submit', function(e) {
+//     e.preventDefault();
     
-    const formData = {
-        name: document.getElementById('name').value,
-        email: document.getElementById('email').value,
-        message: document.getElementById('message').value
-    };
+//     const formData = {
+//         name: document.getElementById('name').value,
+//         email: document.getElementById('email').value,
+//         message: document.getElementById('message').value
+//     };
 
-    // Add your form submission logic here
-    console.log('Form submitted:', formData);
-    // You can add AJAX call to your backend here
-});
+//     // Add your form submission logic here
+//     console.log('Form submitted:', formData);
+//     // You can add AJAX call to your backend here
+// });
 
 // Smooth Scrolling
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -55,8 +55,8 @@ document.querySelectorAll('.skill-card').forEach((card, index) => {
     card.style.animationDelay = `${index * 0.1}s`;
 });
 
-// Dynamic Year
-document.querySelector('.copyright-year').textContent = new Date().getFullYear();
+// // Dynamic Year
+// document.querySelector('.copyright-year').textContent = new Date().getFullYear();
 
 // Theme Toggle (if you want to add dark/light mode)
 function toggleTheme() {
@@ -87,3 +87,34 @@ const welcomeText = document.querySelector('.welcome-text');
 if (welcomeText) {
     typeWriter(welcomeText, 'Welcome to My Portfolio');
 }
+
+// Initialize emailjs
+(function() {
+    emailjs.init('UxTFQpMmMpDjlCmio'); // Add your emailjs user ID here
+})();
+
+// Send email function
+function sendmail(event) {
+    event.preventDefault();  // Prevents the default form submission
+    
+    // Create parameters to send to the email template
+    var params = {
+        from_name: document.getElementById("name").value,
+        email: document.getElementById("email").value,
+        message: document.getElementById("message").value
+    };
+
+    // Send email using emailjs
+    emailjs.send("service_6yiwiof", "template_zq9acdq", params)
+        .then(function(response) {
+            alert("Success! Email sent.");
+            document.getElementById("contactForm").reset();  // Reset form after successful submission
+        })
+        .catch(function(error) {
+            console.error("Failed to send email:", error);
+            alert("Failed to send email. Please try again.");
+        });
+}
+
+// Add event listener to the form
+document.getElementById("contactForm").addEventListener("submit", sendmail);
